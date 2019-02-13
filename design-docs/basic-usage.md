@@ -1,17 +1,17 @@
-## Microsoft Graph Python Client Library
+# Microsoft Graph Python Client Library
 
-
-#### Installation
+## Installation
 
 Run `pip install msgraph-sdk`
 
-#### Authentication
+## Authentication
 
 The Microsoft Graph Python Client Library uses [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python)
 for authentication out of the box.
 
 It reads environment variables automatically from a `.env` file at the project root.
 Your `.env` file should have the following properties.
+
 ```bash
 AUTHORITY=<AUTHORITY>
 CLIENT_ID=<CLIENT_ID>
@@ -19,7 +19,7 @@ SECRET=<SECRET>
 SCOPES=<SCOPES>
 ```
 
-#### Initialize  Microsoft Graph Client.
+## Initialize  Microsoft Graph Client.
 
 ```python
 from msgraph import Client
@@ -27,8 +27,8 @@ from msgraph import Client
 client = Client(options)
 ```
 
-#### Make Requests to Graph
+## Make Requests to Graph
+
 ```python
 user = client.api('/me').get()
 ```
- 
