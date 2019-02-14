@@ -24,7 +24,9 @@ SCOPES=<SCOPES>
 ```python
 from msgraph import Client
 
-client = Client(options)
+scopes = ['User.Read']
+
+client = Client(scopes)
 ```
 
 ## Make Requests to Graph
