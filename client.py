@@ -1,20 +1,36 @@
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 
 
 class Client:
-    def __init__(self, scopes=[]):
-        # TODO: Understand kwargs
+    def __init__(self, scopes='https://graph.microsoft.com/.default'):
+        self.required_env_vars = ['AUTHORITY', 'SECRET', 'CLIENT_ID']
         self.config = {}
         self.load_config()
 
+        self.config.update({'scopes': scopes})
+
     def load_config(self):
-        # TODO: Understand how property access works in python
-        env_file = Path('/.env')
+        env_path = Path.joinpath(Path.cwd().parent, '.env')
+        env_file = Path(env_path)
 
         try:
             env_file.resolve(strict=True)
         except FileNotFoundError:
             raise FileNotFoundError('.env file does not exist.')
         else:
-            load_dotenv()
+            self.check_env_vars(env_file)
+            load_dotenv(dotenv_path=env_file)
+            self.hydrate_config()
+
+    def check_env_vars(self, env_file):
+        env_vars = env_file.read_text()
+
+        for env_var in self.required_env_vars:
+            if env_vars.rfind(env_var) == -1:
+                raise TypeError('Key missing')
+
+    def hydrate_config(self):
+        for env_var in self.required_env_vars:
+            self.config.update({env_var: os.getenv(env_var)})
