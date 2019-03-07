@@ -15,7 +15,7 @@ class TestConfig(unittest.TestCase):
 
     def test_checks_if_config_has_all_required_properties(self):
         create_env_with_missing_property()
-        with self.assertRaises(TypeError):
+        with self.assertRaises(RuntimeError):
             Config()
         remove_env_file()
 

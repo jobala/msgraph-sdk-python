@@ -29,7 +29,6 @@ class Config:
 
     def check_env_vars(self, env_file):
         env_vars = env_file.read_text()
-        print(env_file)
         for env_var in self.required_env_vars:
             if env_vars.rfind(env_var) == -1:
                 raise RuntimeError('Key missing {}'.format(env_var))
