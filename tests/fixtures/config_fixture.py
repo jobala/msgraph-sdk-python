@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-env_path = Path.joinpath(Path.cwd().parent, '.env')
+env_path = Path.joinpath(Path.cwd(), '.env')
 
 
 def create_env_with_all_properties():
