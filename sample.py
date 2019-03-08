@@ -7,5 +7,5 @@ if __name__ == '__main__':
 
     auth_provider = AuthProvider(config)
     client = Client(auth=auth_provider)
-    print(client.access_token)
+    print(client.get('https://graph.microsoft.com/v1.0/me'))
 

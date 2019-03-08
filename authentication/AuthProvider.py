@@ -18,8 +18,5 @@ class AuthProvider(ABCAuthentication):
 
         if not result:
             result = app.acquire_token_for_client(scopes=self.config['scopes'])
-        if "access_token" in result:
+        if 'access_token' in result:
             return result['access_token']
-
-
-
