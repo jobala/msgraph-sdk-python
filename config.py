@@ -4,8 +4,8 @@ import os
 
 
 class Config:
-    def __init__(self, scopes=['https://graph.microsoft.com/.default']):
-        self.required_env_vars = ['AUTHORITY', 'SECRET', 'CLIENT_ID']
+    def __init__(self, scopes=['User.Read']):
+        self.required_env_vars = ['AUTHORITY', 'SECRET', 'CLIENT_ID', 'USERNAME', 'PASSWORD']
         self.config = {}
         self.load_config()
 
